@@ -12,8 +12,8 @@ app.post('/api/csv', (request, response) =>{
     return response.status(200).send(['No file uploaded']);
   }
   csvtojson().fromString(base64Decoded).then((json) => {
-    const jsonArray = convertNumericStringsToNumbers(json);
-    return response.send(jsonArray);
+    const numbersConvertedJson = convertNumericStringsToNumbers(json);
+    return response.status(200).send(numbersConvertedJson);
   });
 });
 
