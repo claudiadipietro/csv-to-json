@@ -7,12 +7,13 @@ const parse = require('csv-parser');
 const fs = require('fs');
 const app = express();
 const csvDecoded = [];
+const type = 'base64'
 
 app.use(express.json());
 
 app.post('/api/csv', (req, res) =>{
   const base64csv = req.body.base64csv
-  const base64decoded = new Buffer.from(base64csv, "base64").toString("ascii");
+  const base64decoded = new Buffer.from(base64csv, type).toString("ascii");
   console.log(base64decoded)
   csvtojson()
   .fromString(base64decoded)
