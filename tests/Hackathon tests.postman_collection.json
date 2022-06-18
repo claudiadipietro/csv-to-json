@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "af8d80c6-b8b6-4abe-b4aa-d82437976660",
+		"name": "Hackathon tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21509288"
+	},
+	"item": [
+		{
+			"name": "Post CSV",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Payload must return a 200 status code\", function () { \r",
+							"     pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Payload must return a body\", function () { \r",
+							"     pm.response.to.be.withBody;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Payload must return a right json\", function () { \r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Payload must return a schema\", function () { \r",
+							"    // Request body:\r",
+							"    /*\r",
+							"        \"base64File\": \"dGVzdCwgbmFtZSwgbGFzdF9uYW1lLCBhZ2UKeWVzLCBDbGF1ZGlhLCBEaSBQaWV0cm8sIDIxCnllcywgQW5kcmVhLCBDb3ZpYW4sIDIxCg==\"\r",
+							"    */\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.have.lengthOf(2);\r",
+							"    pm.expect(responseJson[0].name).to.be.a('string');\r",
+							"    pm.expect(responseJson[0].name).to.eql('Claudia')\r",
+							"    pm.expect(responseJson[0].age).to.be.a('number');\r",
+							"    pm.expect(responseJson[0].age).to.eql(21)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"base64File\": \"dGVzdCwgbmFtZSwgbGFzdF9uYW1lLCBhZ2UKeWVzLCBDbGF1ZGlhLCBEaSBQaWV0cm8sIDIxCnllcywgQW5kcmVhLCBDb3ZpYW4sIDIxCg==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"csv"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
