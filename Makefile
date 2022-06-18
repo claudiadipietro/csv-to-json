@@ -1,4 +1,11 @@
 all:
+	@make install
+	@make run
+
+install:
+	@npm install
+
+run:
 	@npm run dev
 
 test:
