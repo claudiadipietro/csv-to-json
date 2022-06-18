@@ -10,7 +10,7 @@
     "test:watch": "jest --watch"
   },
   "keywords": [],
-  "author": "Claudia Di Pietro",
+  "author": "Claudia Andrea Di Pietro Covian",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
