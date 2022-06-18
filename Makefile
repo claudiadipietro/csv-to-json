@@ -2,4 +2,4 @@ all:
 	@npm run dev
 
 test:
-	@npm run test
+	@node --experimental-vm-modules node_modules/jest/bin/jest.js
