@@ -2,9 +2,11 @@ import express from 'express';
 import csvtojson from 'csvtojson';
 import getFileDecoded from './helpers/get_file_decoded.js';
 import convertNumericStringsToNumbers from './helpers/convert_numbers.js';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.post('/api/csv', (request, response) =>{
   const base64Decoded = getFileDecoded(request);
